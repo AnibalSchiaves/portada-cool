@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <meta name="description" content="Página base HTML5 responsive">
+    <meta name="author" content="Tu Nombre">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(to bottom, black, transparent);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px;
+            text-align: center;
+        }
+        header img {
+            background-color: white;
+            opacity: 0.8;
+            border-radius: 6px;
+        }
+        main {
+            flex: 1;
+        }
+        section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .carousel {
+            width: 100%;
+            /*max-width: 600px;
+            height: 300px;*/
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: scale(1);
+            transition: opacity 1s ease-in-out, transform 5s ease-in-out;
+        }
+        .carousel img.active {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .section-footer {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            gap: 15px;
+            padding: 0.5em;
+            margin-left: 0;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            /*
+            width: 100vw;
+            background-color: black;
+            opacity: 0.5;*/
+            background-color: rgba(0,0,0,0.4);
+        }
+        .section-footer a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+        .section2 {
+            background-color: lightgray;
+        }
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!--<h1>Bienvenido</h1>-->
+        <img src="logo_cerros.png" alt="Logo">
+    </header>
+    <main>
+        <section>
+            <div class="carousel">
+                <img src="imagen1.jpg" alt="Imagen 1">
+                <img src="imagen2.jpg" alt="Imagen 2">
+                <img src="imagen3.jpg" alt="Imagen 3">
+            </div>
+            <div class="section-footer">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+            </div>
+        </section>
+        <section class="section2">
+            <p>Segunda sección visible al hacer scroll</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Todos los derechos reservados</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll(".carousel img");
+            //let index = -1; // Se inicia en -1 para que la primera imagen tenga efecto al cargarse
+            let index = 0;
+            function changeImage() {
+                console.log("ejecuta changeImage",index);
+                if (index >= 0) {
+                    images[index].classList.remove("active");
+                }
+                index = (index + 1) % images.length;
+                images[index].classList.add("active");
+            }
+
+            // Fix para ejecutar la primera transición al cargar la página
+            setTimeout(function() {
+                images[0].classList.add("active");
+            }, 10);
+            
+            //Cada 6 segundos se dispara la transición
+            setInterval(changeImage, 6000);
+        });
+    </script>
+</body>
+</html>
