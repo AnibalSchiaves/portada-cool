@@ -79,6 +79,18 @@
             opacity: 0.5;*/
             background-color: rgba(0,0,0,0.4);
         }
+        @media (max-width: 768px) {
+            .section-footer {
+                display: inline-block;
+            }
+            .section-footer a {
+                margin-left: 1em !important;
+                margin-right: 1em !important;
+            }
+            .section-footer span {
+                display: none;
+            }
+        }
         .section-footer a {
             text-decoration: none;
             color: black;
@@ -107,10 +119,10 @@
                 <img src="imagen3.jpg" alt="Imagen 3">
             </div>
             <div class="section-footer">
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
-                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> <span>Facebook</span></a>
+                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> <span>Twitter</span></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> <span>Instagram</span></a>
+                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> <span>LinkedIn</span></a>
             </div>
         </section>
         <section class="section2">
